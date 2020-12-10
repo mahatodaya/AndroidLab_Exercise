@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab Activity</string>
+    <string name="happy_birthday_to_you">Happy Birthday to You</string>
+    <string name="ram_villa">Ram Villa</string>
+    <string name="manager">Manager</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+</resources>
