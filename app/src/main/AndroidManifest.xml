@@ -9,19 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab01">
-        <activity android:name="lab01.LoginForm2Activity">
+        <activity android:name="lab02.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="lab02.RadioButtonsActivity"></activity>
+        <activity android:name="lab02.IncreaseValueActivity">
+
+        </activity>
+        <activity android:name="lab01.LoginForm2Activity" />
         <activity android:name="lab01.IconAndNameActivity" />
         <activity android:name="lab01.ImageAndText" />
         <activity android:name="lab01.LoginForm" />
-        <activity android:name="lab01.FormActivity">
-
-        </activity>
+        <activity android:name="lab01.FormActivity" />
     </application>
 
 </manifest>
