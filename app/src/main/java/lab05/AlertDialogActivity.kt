@@ -20,6 +20,8 @@ class AlertDialogActivity : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnRegister: Button
 
+    private val batch = arrayOf("24A", "24B", "25A", "25B", "26A")
+    private val department = arrayOf("Academic", "Admission", "Technical", "Exam", "Program")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
