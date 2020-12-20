@@ -19,7 +19,7 @@
         <activity android:name="lab04.Formlab4Activity">
 
         </activity>
-        <activity android:name="lab02.LoginActivity"></activity>
+        <activity android:name="lab02.LoginActivity"/>
         <activity android:name="lab02.RadioButtonsActivity" />
         <activity android:name="lab02.IncreaseValueActivity" />
         <activity android:name="lab01.LoginForm2Activity" />
