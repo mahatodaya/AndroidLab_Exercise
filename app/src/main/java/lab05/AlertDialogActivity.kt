@@ -26,6 +26,8 @@ class AlertDialogActivity : AppCompatActivity() {
     var StudentID = ""
     var Password = ""
     var ConfirmPassword = ""
+    var BatchSpinner = ""
+    var DepartmentSpinner = ""
 
     private val batch = arrayOf("24A", "24B", "25A", "25B", "26A")
     private val department = arrayOf("Academic", "Admission", "Technical", "Exam", "Program")
@@ -54,16 +56,53 @@ class AlertDialogActivity : AppCompatActivity() {
 
         btnRegister.setOnClickListener(){
             retrievesValues()
-            Toast.makeText(this, "yes",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$FullName",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$Email",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$BatchSpinner",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$DepartmentSpinner",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$StudentID",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$Password",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$ConfirmPassword",Toast.LENGTH_SHORT).show()
         }
 
     }
+
+    private fun alertDialog(){
+        
+    }
+
     private fun callAdapter(){
         val batchAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, batch)
-        val departmentAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, department)
-
         batchSpinner.adapter = batchAdapter
+
+        batchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val batchSpinner = parent?.getItemAtPosition(position).toString()
+                BatchSpinner = batchSpinner
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+        val departmentAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, department)
         departmentSpinner.adapter = departmentAdapter
+
+        departmentSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val departmentSpinner = parent?.getItemAtPosition(position).toString()
+                DepartmentSpinner = departmentSpinner
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+
     }
 
     private fun rdoSelection(){
@@ -77,6 +116,7 @@ class AlertDialogActivity : AppCompatActivity() {
             llStudent.visibility = View.GONE
         }
     }
+
 
     private fun retrievesValues(){
         var fn = etFullName.text.toString()
