@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.lab01.R
 
 class AlertDialogActivity : AppCompatActivity() {
@@ -56,19 +57,36 @@ class AlertDialogActivity : AppCompatActivity() {
 
         btnRegister.setOnClickListener(){
             retrievesValues()
-            Toast.makeText(this, "$FullName",Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "$Email",Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "$BatchSpinner",Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "$DepartmentSpinner",Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "$StudentID",Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "$Password",Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "$ConfirmPassword",Toast.LENGTH_SHORT).show()
+            alertDialog()
+//            Toast.makeText(this, "$FullName",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$Email",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$BatchSpinner",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$DepartmentSpinner",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$StudentID",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$Password",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$ConfirmPassword",Toast.LENGTH_SHORT).show()
         }
 
     }
 
     private fun alertDialog(){
-        
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Some Information about staff or student")
+        builder.setMessage("Full Name = $FullName " +
+                "Email = $Email " +
+                "Batch = $BatchSpinner " +
+                "Department = $DepartmentSpinner " +
+                "Student ID = $StudentID " +
+                "Password = $Password " +
+                "ConfirmPassword = $ConfirmPassword ")
+        builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+        builder.setPositiveButton("Ok"){_,_ ->}
+        builder.setNeutralButton("Cancel"){_,_ ->}
+
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
     }
 
     private fun callAdapter(){
