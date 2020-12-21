@@ -40,5 +40,11 @@ class AlertDialogActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         etConfirmPassword = findViewById(R.id.etConfirmPassword)
         btnRegister = findViewById(R.id.btnRegister)
+
+        val batchAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, batch)
+        val departmentAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, department)
+
+        batchSpinner.adapter = batchAdapter
+        departmentSpinner.adapter = departmentAdapter
     }
 }
