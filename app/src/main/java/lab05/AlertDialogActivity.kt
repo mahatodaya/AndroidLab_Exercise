@@ -2,6 +2,7 @@ package lab05
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.example.lab01.R
 
@@ -41,10 +42,28 @@ class AlertDialogActivity : AppCompatActivity() {
         etConfirmPassword = findViewById(R.id.etConfirmPassword)
         btnRegister = findViewById(R.id.btnRegister)
 
+        callAdapter()
+        rdoSelection()
+
+
+    }
+    private fun callAdapter(){
         val batchAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, batch)
         val departmentAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, department)
 
         batchSpinner.adapter = batchAdapter
         departmentSpinner.adapter = departmentAdapter
+    }
+
+    private fun rdoSelection(){
+        rdoStudent.setOnClickListener {
+            llStudent.visibility = View.VISIBLE
+            llStaff.visibility = View.GONE
+        }
+
+        rdoStaff.setOnClickListener {
+            llStaff.visibility = View.VISIBLE
+            llStudent.visibility = View.GONE
+        }
     }
 }
