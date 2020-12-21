@@ -21,6 +21,12 @@ class AlertDialogActivity : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnRegister: Button
 
+    var FullName = ""
+    var Email = ""
+    var StudentID = ""
+    var Password = ""
+    var ConfirmPassword = ""
+
     private val batch = arrayOf("24A", "24B", "25A", "25B", "26A")
     private val department = arrayOf("Academic", "Admission", "Technical", "Exam", "Program")
 
@@ -44,7 +50,12 @@ class AlertDialogActivity : AppCompatActivity() {
 
         callAdapter()
         rdoSelection()
+        retrievesValues()
 
+        btnRegister.setOnClickListener(){
+            retrievesValues()
+            Toast.makeText(this, "yes",Toast.LENGTH_SHORT).show()
+        }
 
     }
     private fun callAdapter(){
@@ -65,5 +76,23 @@ class AlertDialogActivity : AppCompatActivity() {
             llStaff.visibility = View.VISIBLE
             llStudent.visibility = View.GONE
         }
+    }
+
+    private fun retrievesValues(){
+        var fn = etFullName.text.toString()
+        etFullName.setText(fn)
+        FullName = fn
+        var email = etEmail.text.toString()
+        etEmail.setText(email)
+        Email = email
+        var studentID = etStudentID.text.toString()
+        etStudentID.setText(studentID)
+        StudentID = studentID
+        var password = etPassword.text.toString()
+        etPassword.setText(password)
+        Password = password
+        var confirmPassword = etConfirmPassword.text.toString()
+        etConfirmPassword.setText(confirmPassword)
+        ConfirmPassword = confirmPassword
     }
 }
