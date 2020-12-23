@@ -2,17 +2,19 @@ package lab05
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.example.lab01.R
 
 class AlertDialogActivity : AppCompatActivity() {
-    private lateinit var etFullName : EditText
-    private lateinit var etEmail : EditText
-    private lateinit var rdoGroup : RadioGroup
-    private lateinit var rdoStudent : RadioButton
-    private lateinit var rdoStaff : RadioButton
+    private lateinit var etFullName: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var rdoGroup: RadioGroup
+    private lateinit var rdoStudent: RadioButton
+    private lateinit var rdoStaff: RadioButton
     private lateinit var llStudent: LinearLayout
     private lateinit var batchSpinner: Spinner
     private lateinit var etStudentID: EditText
@@ -21,6 +23,7 @@ class AlertDialogActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnRegister: Button
+    private lateinit var llCustomAlertDialog: AlertDialog
 
     var FullName = ""
     var Email = ""
@@ -29,6 +32,8 @@ class AlertDialogActivity : AppCompatActivity() {
     var ConfirmPassword = ""
     var BatchSpinner = ""
     var DepartmentSpinner = ""
+
+    private var isStudent = false
 
     private val batch = arrayOf("24A", "24B", "25A", "25B", "26A")
     private val department = arrayOf("Academic", "Admission", "Technical", "Exam", "Program")
@@ -55,45 +60,50 @@ class AlertDialogActivity : AppCompatActivity() {
         rdoSelection()
         retrievesValues()
 
-        btnRegister.setOnClickListener(){
+        btnRegister.setOnClickListener() {
             retrievesValues()
             alertDialog()
-//            Toast.makeText(this, "$FullName",Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "$Email",Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "$BatchSpinner",Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "$DepartmentSpinner",Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "$StudentID",Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "$Password",Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "$ConfirmPassword",Toast.LENGTH_SHORT).show()
         }
-
     }
 
-    private fun alertDialog(){
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Some Information about staff or student")
-        builder.setMessage("Full Name = $FullName " +
-                "Email = $Email " +
-                "Batch = $BatchSpinner " +
-                "Department = $DepartmentSpinner " +
-                "Student ID = $StudentID " +
-                "Password = $Password " +
-                "ConfirmPassword = $ConfirmPassword ")
-        builder.setIcon(android.R.drawable.ic_dialog_alert)
+    private fun alertDialog() {
 
-        builder.setPositiveButton("Ok"){_,_ ->}
-        builder.setNeutralButton("Cancel"){_,_ ->}
+        val view = layoutInflater.inflate(R.layout.custom_alert_dialog, null)
+        llCustomAlertDialog = AlertDialog.Builder(this)
+                .setView(view)
+                .setTitle("Information about staff or student").create()
+        val btnCancel: Button = view.findViewById(R.id.btnCancel)
+        val tvFullName: TextView = view.findViewById(R.id.tvFullName)
+        val tvEmail: TextView = view.findViewById(R.id.tvEmail)
+        val tvPassword: TextView = view.findViewById(R.id.tvPassword)
+        val tvIsStudent: TextView = view.findViewById(R.id.tvIsStudent)
+        val tvID: TextView = view.findViewById(R.id.tvStudentID)
+        val tvBatch: TextView = view.findViewById(R.id.tvBatch)
 
-        val alertDialog: AlertDialog = builder.create()
-        alertDialog.setCancelable(false)
-        alertDialog.show()
+        btnCancel.setOnClickListener() {
+            llCustomAlertDialog.dismiss()
+        }
+        tvFullName.text = "Name : $FullName "
+        tvEmail.text = "Email : $Email "
+        tvPassword.text = "Password : $Password "
+        if (isStudent) {
+            tvIsStudent.text = "Is A Student"
+            val id = etStudentID.text.toString()
+            tvID.text = "ID: $StudentID"
+            tvBatch.text = "Batch: $BatchSpinner"
+        } else {
+            tvIsStudent.text = "Is A Staff"
+            tvBatch.visibility = View.GONE
+            tvID.text = "Department: $DepartmentSpinner"
+        }
+        llCustomAlertDialog.show()
     }
 
-    private fun callAdapter(){
+    private fun callAdapter() {
         val batchAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, batch)
         batchSpinner.adapter = batchAdapter
 
-        batchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        batchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val batchSpinner = parent?.getItemAtPosition(position).toString()
                 BatchSpinner = batchSpinner
@@ -102,13 +112,12 @@ class AlertDialogActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
-
         }
 
         val departmentAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, department)
         departmentSpinner.adapter = departmentAdapter
 
-        departmentSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        departmentSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val departmentSpinner = parent?.getItemAtPosition(position).toString()
                 DepartmentSpinner = departmentSpinner
@@ -117,26 +126,24 @@ class AlertDialogActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
-
         }
-
-
     }
 
-    private fun rdoSelection(){
+    private fun rdoSelection() {
         rdoStudent.setOnClickListener {
+            isStudent = true
             llStudent.visibility = View.VISIBLE
             llStaff.visibility = View.GONE
         }
 
         rdoStaff.setOnClickListener {
+            isStudent = false
             llStaff.visibility = View.VISIBLE
             llStudent.visibility = View.GONE
         }
     }
 
-
-    private fun retrievesValues(){
+    private fun retrievesValues() {
         var fn = etFullName.text.toString()
         etFullName.setText(fn)
         FullName = fn
