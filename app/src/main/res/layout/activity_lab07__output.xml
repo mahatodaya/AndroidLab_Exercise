@@ -8,7 +8,7 @@
     tools:context="lab07.Lab07OutputActivity">
 
     <ListView
-        android:id="@+id/lvPerson"
+        android:id="@+id/lvStudent"
         android:layout_width="match_parent"
         android:layout_height="350dp"
 
@@ -45,7 +45,7 @@
             android:textStyle="bold"
             />
         <TextView
-            android:id="@+id/tvMobile"
+            android:id="@+id/tvMobileNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0"
@@ -54,6 +54,7 @@
             />
     </LinearLayout>
     <Button
+        android:id="@+id/btnAddStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Student"
