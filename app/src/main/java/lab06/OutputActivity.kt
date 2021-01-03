@@ -27,7 +27,6 @@ class OutputActivity : AppCompatActivity() {
         tvGender = findViewById(R.id.tvGender)
         tvMobile = findViewById(R.id.tvMobile)
 
-
         val intent = intent
         val personNames = mutableListOf<String>()
         if (intent != null) {
@@ -56,7 +55,6 @@ class OutputActivity : AppCompatActivity() {
                 tvAddress.text = "Address : ${person.Address}"
                 tvGender.text = "Gender : ${person.Gender}"
                 tvMobile.text = "Mobile : ${person.Mobile}"
-
             }
         }
     }

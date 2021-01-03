@@ -34,7 +34,6 @@ class ListViewActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener{
             retrieveValues()
         }
-
     }
 
     private fun retrieveValues(){
