@@ -42,6 +42,22 @@ class OutputActivity : AppCompatActivity() {
                 android.R.layout.simple_list_item_1,
                 personNames
             )
+
+            lvPerson.setOnItemClickListener { parent, view, position, id ->
+                val name = parent.getItemAtPosition(position).toString()
+                personDetails(name)
+            }
+        }
+    }
+    private fun personDetails(name : String) {
+        for (person in persons) {
+            if (person.Name == name) {
+                tvName.text = "Name : $name"
+                tvAddress.text = "Address : ${person.Address}"
+                tvGender.text = "Gender : ${person.Gender}"
+                tvMobile.text = "Mobile : ${person.Mobile}"
+
+            }
         }
     }
 }
