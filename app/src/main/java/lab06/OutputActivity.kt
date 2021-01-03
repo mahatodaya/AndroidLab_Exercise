@@ -2,6 +2,8 @@ package lab06
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import com.example.lab01.R
@@ -24,5 +26,22 @@ class OutputActivity : AppCompatActivity() {
         tvAddress = findViewById(R.id.tvAddress)
         tvGender = findViewById(R.id.tvGender)
         tvMobile = findViewById(R.id.tvMobile)
+
+
+        val intent = intent
+        val personNames = mutableListOf<String>()
+        if (intent != null) {
+            persons = intent.getSerializableExtra("persons") as ArrayList<Person>
+            for (person in persons) {
+                Log.d("ShowActivity", person.Name)
+                personNames.add(person.Name)
+            }
+
+            lvPerson.adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                personNames
+            )
+        }
     }
 }
