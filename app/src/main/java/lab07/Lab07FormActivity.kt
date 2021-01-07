@@ -13,8 +13,6 @@ class Lab07FormActivity : AppCompatActivity() {
     private lateinit var etAddress : EditText
     private lateinit var etMobile : EditText
     private lateinit var rdoGender: RadioGroup
-    private lateinit var rdoMale : RadioButton
-    private lateinit var rdoFemale : RadioButton
     private lateinit var btnSubmit : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +23,20 @@ class Lab07FormActivity : AppCompatActivity() {
         etAddress = findViewById(R.id.etAddress)
         etMobile = findViewById(R.id.etMobile)
         rdoGender = findViewById(R.id.rdoGroup)
-        rdoMale = findViewById(R.id.rdoMale)
-        rdoFemale = findViewById(R.id.rdoFemale)
         btnSubmit = findViewById(R.id.btnSubmit)
+
+        btnSubmit.setOnClickListener {
+            addStudents()
+        }
+    }
+    private fun addStudents(){
+        val name = etName.text.toString()
+        val address = etAddress.text.toString()
+        val mobileNumber = etMobile.text.toString()
+        val checkedID = rdoGender.checkedRadioButtonId
+        val checkedRadioButton: RadioButton = findViewById(checkedID)
+        val sex = checkedRadioButton.text.toString()
+
+
     }
 }

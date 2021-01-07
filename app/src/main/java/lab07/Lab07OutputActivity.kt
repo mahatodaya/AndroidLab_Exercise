@@ -1,5 +1,6 @@
 package lab07
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,5 +27,12 @@ class Lab07OutputActivity : AppCompatActivity() {
         tvGender = findViewById(R.id.tvGender)
         tvMobileNumber = findViewById(R.id.tvMobileNumber)
         btnStudent = findViewById(R.id.btnAddStudent)
+
+        btnStudent.setOnClickListener {
+            val intent = Intent(this, Lab07FormActivity::class.java)
+            startActivity(intent)
+        }
     }
+
+
 }
