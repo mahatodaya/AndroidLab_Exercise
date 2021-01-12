@@ -1,8 +1,11 @@
 package lab07
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
@@ -16,6 +19,8 @@ class Lab07OutputActivity : AppCompatActivity() {
     private lateinit var tvGender : TextView
     private lateinit var tvMobileNumber : TextView
     private lateinit var btnStudent: Button
+    private var students = arrayListOf<Student>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +35,27 @@ class Lab07OutputActivity : AppCompatActivity() {
 
         btnStudent.setOnClickListener {
             val intent = Intent(this, Lab07FormActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 1)
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            val studentName = mutableListOf<String>()
+            if (resultCode == Activity.RESULT_OK) {
+                val student = data?.getParcelableExtra<Student>("students")
+                if (student != null) {
+                    students.add(student)
+                }
+                println(students)
 
+                for (student in students) {
+                    student.name?.let { studentName.add(it) }
+                    Log.d("printed",studentName.toString())
+                }
+                lvStudent.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, studentName)
+            }
+        }
+    }
 }

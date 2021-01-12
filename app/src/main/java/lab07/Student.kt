@@ -3,8 +3,12 @@ package lab07
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Student(val name: String?, val address: String?, val number: String?, val gender: String?)
-    : Parcelable {
+data class Student(
+        val name: String? = null,
+        val address: String? = null,
+        val number: String? = null,
+        val gender: String? = null
+) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
