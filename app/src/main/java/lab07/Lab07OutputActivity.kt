@@ -48,7 +48,6 @@ class Lab07OutputActivity : AppCompatActivity() {
                 if (student != null) {
                     students.add(student)
                 }
-                println(students)
 
                 for (student in students) {
                     student.name?.let { studentName.add(it) }
