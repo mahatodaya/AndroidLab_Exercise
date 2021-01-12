@@ -55,6 +55,20 @@ class Lab07OutputActivity : AppCompatActivity() {
                     Log.d("printed",studentName.toString())
                 }
                 lvStudent.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, studentName)
+                lvStudent.setOnItemClickListener { parent, view, position, id ->
+                    val name = parent.getItemAtPosition(position).toString()
+                    studentDetails(name)
+                }
+            }
+        }
+    }
+    private fun studentDetails(name : String) {
+        for (student in students) {
+            if (student.name == name) {
+                tvName.text = "Name : $name"
+                tvAddress.text = "Address : ${student.address}"
+                tvMobileNumber.text = "Number : ${student.number}"
+                tvGender.text = "Gender : ${student.gender}"
             }
         }
     }
