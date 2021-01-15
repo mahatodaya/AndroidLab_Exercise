@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab01">
-        <activity android:name="lab07.Lab07FormActivity"/>
-        <activity android:name="lab07.Lab07OutputActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name="lab08.Lab08FormActivity"></activity>
+        <activity android:name="lab08.Lab08RecyclerViewActivity" />
+        <activity android:name="lab07.Lab07FormActivity" />
+        <activity android:name="lab07.Lab07OutputActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="lab06.OutputActivity" />
-        <activity android:name="lab06.ListViewActivity">
-
-        </activity>
+        <activity android:name="lab06.ListViewActivity" />
         <activity android:name="lab05.AlertDialogActivity" />
         <activity android:name="lab04.Formlab4Activity" />
         <activity android:name="lab02.LoginActivity" />
