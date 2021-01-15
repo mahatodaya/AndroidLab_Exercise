@@ -31,9 +31,7 @@ class StudentAdapter (
         holder.tvName.text = student.name
         holder.tvAddress.text = student.address
 
-        Glide.with(context)
-            .load(student.image)
-            .into(holder.imageProfile)
+
     }
 
     override fun getItemCount(): Int {

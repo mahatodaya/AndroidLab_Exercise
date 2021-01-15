@@ -4,19 +4,16 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class StudentModel(
-    val image: String? = null,
     val name: String? = null,
     val address: String? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
         parcel.readString(),
         parcel.readString()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(image)
         parcel.writeString(name)
         parcel.writeString(address)
     }
