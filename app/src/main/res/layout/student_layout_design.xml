@@ -14,7 +14,7 @@
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgProfile"
+            android:id="@+id/imgProfile8"
             android:layout_width="149dp"
             android:layout_height="133dp"
             android:layout_marginStart="16dp"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="16dp"
             tools:ignore="MissingClass" />
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tvName8"
             android:layout_width="197dp"
             android:layout_height="27dp"
             android:layout_marginStart="20dp"
@@ -35,19 +35,19 @@
             android:text="Name"
             android:textStyle="bold"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/imgProfile"
+            app:layout_constraintStart_toEndOf="@+id/imgProfile8"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="20dp" />
         <TextView
-            android:id="@+id/tvAddress"
+            android:id="@+id/tvAddress8"
             android:layout_width="197dp"
             android:layout_height="27dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
             android:text="Address"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/imgProfile"
-            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            app:layout_constraintStart_toEndOf="@+id/imgProfile8"
+            app:layout_constraintTop_toBottomOf="@+id/tvName8"
             android:layout_marginLeft="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

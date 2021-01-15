@@ -13,16 +13,16 @@ import de.hdodenhof.circleimageview.CircleImageView
 class StudentAdapter (
     private val lstStudent : ArrayList<StudentModel>,
     val context : Context
-        ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder> (){
-    class StudentViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val imageProfile : CircleImageView = view.findViewById(R.id.imgProfile)
-        val tvName: TextView = view.findViewById(R.id.tvName)
-        val tvAddress: TextView = view.findViewById(R.id.tvAddress)
+        ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder> () {
+    class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageProfile: CircleImageView = view.findViewById(R.id.imgProfile8)
+        val tvName: TextView = view.findViewById(R.id.tvName8)
+        val tvAddress: TextView = view.findViewById(R.id.tvAddress8)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.student_layout_design, parent,false)
+            .inflate(R.layout.student_layout_design, parent, false)
         return StudentViewHolder(view)
     }
 
